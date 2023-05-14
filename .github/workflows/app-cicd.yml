@@ -9,6 +9,11 @@ on:
      - main
     paths:
      - 'src/**'
+     
+permissions:
+    id-token: write   
+    contents: read
+    
 jobs:
 
   CICD:
