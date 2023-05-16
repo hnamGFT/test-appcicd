@@ -77,9 +77,9 @@ jobs:
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG       
         
-    #  - name: Update image tag
-    #    run: |
-    #      sed -i "s|094175769936.dkr.ecr.eu-central-1.amazonaws.com/ideabank:latest|$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG|g" depservice.yml
+      - name: Update image tag
+        run: |
+          sed -i "s|094175769936.dkr.ecr.eu-central-1.amazonaws.com/ideabank:latest|$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG|g" depservice.yml
           
           
          # EKS Cluster Authentication
