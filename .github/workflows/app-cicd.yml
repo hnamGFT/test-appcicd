@@ -20,6 +20,7 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     
+    # Set Image tag as github.sha
     env:
       IMAGE_TAG: ${{ github.sha }}
       
@@ -74,27 +75,23 @@ jobs:
         env:
          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
          ECR_REPOSITORY: ideabank
-         #IMAGE_TAG: ${{ github.sha }}
          #IMAGE_TAG: v3
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG       
       
-          
-      - name: change image tag
+        # Update Image tag in k8 yml file
+      - name: Update Image tag in k8 yml file
         uses: cschleiden/replace-tokens@v1
         with:
           files: 'depservice.yml'
         env:
            Version: ${{ env.IMAGE_TAG }}
-           #Version: ${{ github.sha }}
-    
-    # sed -i 094175769936.dkr.ecr.eu-central-1.amazonaws.com/ideabank:'s|latest|$IMAGE_TAG|g' depservice.yml
+         
       - name: check image tag     
         run: cat depservice.yml
      
-     
-   # EKS Cluster Authentication
+       # EKS Cluster Authentication
       - name: EKS Cluster Authentication
         run: aws eks update-kubeconfig --name my-eks --region eu-central-1
 
