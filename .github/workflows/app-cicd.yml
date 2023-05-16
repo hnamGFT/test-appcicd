@@ -40,11 +40,11 @@ jobs:
           mkdir staging && cp target/*.jar staging
 
         # Upload Artificats
-      - name: Upload Artificats
-        uses: actions/upload-artifact@v3
-        with:
-          name: java-artifacts
-          path: staging
+     # - name: Upload Artificats
+     #   uses: actions/upload-artifact@v3
+     #   with:
+     #     name: java-artifacts
+     #     path: staging
          
         # Configure AWS credentials
       - name: Configure AWS credentials
@@ -80,7 +80,7 @@ jobs:
       - name: Update image tag
         run: |
           sed -i "s|094175769936.dkr.ecr.eu-central-1.amazonaws.com/ideabank:latest|$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG|g" depservice.yml
-          
+          cat depservice.yml
           
          # EKS Cluster Authentication
       - name: EKS Cluster Authentication
