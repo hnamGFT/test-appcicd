@@ -11,7 +11,7 @@ public class DevopsIntegrationApplication {
 
 	@GetMapping
 	public String message(){
-		return "welcome to IdeaBank.";
+		return "welcome to IdeaBank.hassan";
 	}
 
 	public static void main(String[] args) {
