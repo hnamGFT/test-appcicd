@@ -86,7 +86,7 @@ jobs:
         with:
           files: 'depservice.yml'
         env:
-           Version: ${{ env.$IMAGE_TAG }}
+           Version: ${{ env.IMAGE_TAG }}
            #Version: ${{ github.sha }}
     
     # sed -i 094175769936.dkr.ecr.eu-central-1.amazonaws.com/ideabank:'s|latest|$IMAGE_TAG|g' depservice.yml
