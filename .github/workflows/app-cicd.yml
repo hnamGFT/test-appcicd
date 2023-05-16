@@ -79,7 +79,7 @@ jobs:
         
       - name: Update image tag
         run: |
-          sed -i "s|094175769936.dkr.ecr.eu-central-1.amazonaws.com/ideabank:latest|$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG|g" depservice.yml
+          sed -i 094175769936.dkr.ecr.eu-central-1.amazonaws.com/ideabank:'s|latest|$IMAGE_TAG|g' depservice.yml
           cat depservice.yml
           
          # EKS Cluster Authentication
