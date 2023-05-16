@@ -1,6 +1,3 @@
-# use tagging
-# use oidc role
-
 name: Application-CICD
 
 on:
@@ -44,11 +41,11 @@ jobs:
           mkdir staging && cp target/*.jar staging
 
         # Upload Artificats
-     # - name: Upload Artificats
-     #   uses: actions/upload-artifact@v3
-     #   with:
-     #     name: java-artifacts
-     #     path: staging
+      - name: Upload Artificats
+        uses: actions/upload-artifact@v3
+        with:
+          name: java-artifacts
+          path: staging
          
         # Configure AWS credentials
       - name: Configure AWS credentials
