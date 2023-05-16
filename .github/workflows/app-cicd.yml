@@ -76,13 +76,21 @@ jobs:
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG       
-        
-      - name: Update image tag
-        run: |
-          sed -i 094175769936.dkr.ecr.eu-central-1.amazonaws.com/ideabank:'s|latest|$IMAGE_TAG|g' depservice.yml
-          cat depservice.yml
+      
           
-         # EKS Cluster Authentication
+      - name: change image tag
+        uses: cschleiden/replace-tokens@v1
+        with:
+          files: 'depservice.yml'
+        env:
+           Version: $IMAGE_TAG
+    
+    # sed -i 094175769936.dkr.ecr.eu-central-1.amazonaws.com/ideabank:'s|latest|$IMAGE_TAG|g' depservice.yml
+      - name: check image tag     
+        run: cat depservice.yml
+     
+     
+   # EKS Cluster Authentication
       - name: EKS Cluster Authentication
         run: aws eks update-kubeconfig --name my-eks --region eu-central-1
 
