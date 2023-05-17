@@ -1,0 +1,11 @@
+appName: nodeapp-deployment
+appLabel: nodeapp 
+replica: 4
+imageName: nodeserver
+image: 724821/nodeapp:latest
+containerPort: 3000
+
+serviceName: nodeapp-service
+serviceType: LoadBalancer
+servicePort: 5000
+nodePort: 31110
