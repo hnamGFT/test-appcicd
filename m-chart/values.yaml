@@ -1,11 +1,11 @@
-appName: nodeapp-deployment
-appLabel: nodeapp 
-replica: 4
-imageName: nodeserver
-image: 724821/nodeapp:latest
-containerPort: 3000
+appName: myapp-deployment
+appLabel: myapp 
+replica: 2
+imageName: myserver
+image: 094175769936.dkr.ecr.eu-central-1.amazonaws.com/ideabank:#{Version}#
+containerPort: 8080
 
-serviceName: nodeapp-service
-serviceType: LoadBalancer
+serviceName: myapp-service
+serviceType: NodePort
 servicePort: 5000
 nodePort: 31110
