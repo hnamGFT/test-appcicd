@@ -81,21 +81,23 @@ jobs:
       - name: Update Image tag in k8 yml file
         uses: cschleiden/replace-tokens@v1
         with:
-          files: 'depservice.yml'
+          files: 'm-chart/values.yaml'
+          # files: 'depservice.yml'
         env:
            Version: ${{ env.IMAGE_TAG }}
          
       - name: check image tag     
-        run: cat depservice.yml
+        run: cat m-chart/values.yaml
      
        # EKS Cluster Authentication
       - name: EKS Cluster Authentication
         run: aws eks update-kubeconfig --name my-eks --region eu-central-1
 
          # Deploy image to Amazon EKS
-      - name: Deploy image to Amazon EKS
-        run: |
-          kubectl apply -f depservice.yml
+     # - name: Deploy image to Amazon EKS
+     #   run: |
+         # helm install mynewapp my-chart 
+         # kubectl apply -f depservice.yml
           
          
 
