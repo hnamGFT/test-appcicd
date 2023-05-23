@@ -90,7 +90,7 @@ jobs:
           aws ssm send-command \
               --document-name "AWS-RunShellScript" \
               --targets '[{"Key":"InstanceIds","Values":["i-04e8acb5d03c899f8"]}]' \
-              --parameters '{"commands":["#!/bin/bash","touch q.txt","touch p.txt"]}'
+              --parameters '{"commands":["#!/bin/bash","cd ../../../..","cd home/ssm-user","touch has.txt"]}'
       
        
      # - name: check image tag     
