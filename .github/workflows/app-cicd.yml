@@ -85,6 +85,10 @@ jobs:
         env:
            Version: ${{ env.IMAGE_TAG }}
          
+      - name: Access EC2 and deploy      
+        run: aws ec2 describe-instances
+     
+       
      # - name: check image tag     
      #   run: cat m-chart/values.yaml
      
