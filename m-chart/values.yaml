@@ -2,7 +2,7 @@ appName: myapp-deployment
 appLabel: myapp 
 replica: 2
 imageName: myserver
-image: 094175769936.dkr.ecr.eu-central-1.amazonaws.com/ideabank:#{Version}#
+image: 000022203321.dkr.ecr.eu-central-1.amazonaws.com/ideabank-has:#{Version}#
 containerPort: 8080
 
 serviceName: myapp-service
