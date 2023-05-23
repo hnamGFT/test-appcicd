@@ -87,10 +87,11 @@ jobs:
          
       - name: Access EC2 and deploy      
         run: | 
-         aws ssm send-command \
-         --document-name “script.sh” \
-         --targets '[{"Key":"i-075e262e8ddb2775a","Values":["instance-id"]}]' \
-         --parameters '{"commands":["#!/bin/bash”,”touch ab.txt”]}’
+          aws ssm send-command \
+              --document-name "AWS-RunShellScript" \
+              --targets '[{"Key":"InstanceIds","Values":["i-04e8acb5d03c899f8"]}]' \
+              --parameters '{"commands":["#!/bin/bash","touch q.txt","touch p.txt"]}'
+      
        
      # - name: check image tag     
      #   run: cat m-chart/values.yaml
