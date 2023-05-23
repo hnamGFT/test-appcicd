@@ -76,8 +76,8 @@ jobs:
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG       
       
-        # Update Image tag in k8 yml file
-      - name: Update Image tag in k8 yml file
+        # Update Image tag in k8 yaml/helm chart
+      - name: Update Image tag in k8 yml/helm chart
         uses: cschleiden/replace-tokens@v1
         with:
           files: 'm-chart/values.yaml'
